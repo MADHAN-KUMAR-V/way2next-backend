@@ -20,4 +20,4 @@ RUN ls -l target
 EXPOSE 8080
 
 # Run the application using the full path to the JAR file
-CMD ["java", "-jar", "/app/target/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/target/madhan-0.0.1-SNAPSHOT.jar"]
