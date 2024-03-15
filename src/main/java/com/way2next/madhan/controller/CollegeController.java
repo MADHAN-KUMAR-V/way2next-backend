@@ -27,4 +27,8 @@ public class CollegeController {
     public Optional<College> findCollegeById(@PathVariable Integer id){
         return collegeService.findCollegeById(id);
     }
+    @GetMapping("/greet")
+    public String greet(){
+        return "working";
+    }
 }
