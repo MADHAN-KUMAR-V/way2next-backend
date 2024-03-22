@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/college")
-@CrossOrigin(origins = "https://app-way2next.onrender.com/")
+@CrossOrigin(origins = {"https://app-way2next.onrender.com/","http://localhost:3000/"})
 public class CollegeController {
 
     @Autowired
