@@ -3,9 +3,11 @@ package com.way2next.madhan.service;
 import com.way2next.madhan.collection.College;
 import com.way2next.madhan.repository.CollegeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -19,8 +21,8 @@ public class CollegeServiceImp implements CollegeService{
     }
 
     @Override
-    public List<College> listAllCollge() {
-        return collegeRepository.findAll();
+    public Page<College> listAllCollge(int page, int size) {
+        return collegeRepository.findAll(PageRequest.of(page, size, Sort.by("id")));
     }
 
     @Override
