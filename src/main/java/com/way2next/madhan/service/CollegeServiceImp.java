@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -28,5 +29,12 @@ public class CollegeServiceImp implements CollegeService{
     @Override
     public Optional<College> findCollegeById(Integer id) {
         return collegeRepository.findById(id);
+    }
+
+    @Override
+    public Page<College> searchCollege(int page, int size, String name) {
+        Page<College> filterCollege = collegeRepository.findAllByCollegeName(name,
+                                                                    PageRequest.of(page,size,Sort.by("id")));
+        return filterCollege;
     }
 }

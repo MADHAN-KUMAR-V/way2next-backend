@@ -16,6 +16,7 @@ public class CollegeController {
 
     @Autowired
     private CollegeService collegeService;
+
     @PostMapping
     public void save(@RequestBody College college){
         collegeService.save(college);
@@ -23,15 +24,24 @@ public class CollegeController {
 
     @GetMapping
     public Page<College> listAllCollege(@RequestParam(value = "page" ,defaultValue = "0") int page,
-                                              @RequestParam(value = "size",defaultValue = "5") int size){
+                                        @RequestParam(value = "size",defaultValue = "5") int size){
         return collegeService.listAllCollge(page,size);
     }
+
     @GetMapping("/{id}")
     public Optional<College> findCollegeById(@PathVariable Integer id){
         return collegeService.findCollegeById(id);
     }
+
     @GetMapping("/greet")
     public String greet(){
         return "working";
+    }
+
+    @GetMapping("/search")
+    public Page<College> searchCollege(@RequestParam(value = "page" ,defaultValue = "0") int page,
+                                       @RequestParam(value = "size",defaultValue = "5") int size,
+                                       @RequestParam(value = "college") String name){
+        return collegeService.searchCollege(page,size,name);
     }
 }
